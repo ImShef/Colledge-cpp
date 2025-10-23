@@ -1,14 +1,12 @@
 #include <iostream>
-#include <random>
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
-    // Современный генератор случайных чисел
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dist(1, 100);
-    
-    int secretNumber = dist(gen);
+    std::srand(std::time({}));
+
+    const int secret{ std::rand() % 100 + 1};
     
     std::cout << "Укажи сколько попыток хочешь: ";
     int pop{};
@@ -20,10 +18,10 @@ int main()
         int tmp{};
         std::cin >> tmp;
         
-        if (tmp > secretNumber) {
+        if (tmp > secret) {
             std::cout << "Число меньше " << tmp << "\n";
         }
-        else if (tmp < secretNumber) {
+        else if (tmp < secret) {
             std::cout << "Число больше " << tmp << "\n";
         }
         else {
@@ -32,6 +30,6 @@ int main()
         }
     }
     
-    std::cout << "Попытки закончились! Загаданное число было: " << secretNumber << "\n";
+    std::cout << "Попытки закончились! Загаданное число было: " << secret << "\n";
     return 0;
 }
