@@ -3,23 +3,26 @@ const int size{5};
 
 void sortArr(int arr[size], int len = size) {
     for (int i{}; i < len; i++) {
-        int indMin{ i };
         for (int j{i}; j < len; j++) {
+            int indMin{};
             if (arr[i] > arr[j]) {
-                indMin = j;
+                indMin = arr[j];
+                arr[j] = arr[i];
+                arr[i] = indMin;
             }
         }
-        int temp{arr[i]};
-        arr[i] = arr[indMin];
-        arr[indMin] = temp;
     }
 }
 
 int main() {
     int arr[size]{5,4,3,2,1};
-    std::cout << arr;
+    for(int i{}; i < size; i++)
+        std::cout << arr[i] << " ";
+    std::cout << "\n";
     sortArr(arr, size);
-    std::cout << arr;
+    for(int i{}; i < size; i++)
+        std::cout << arr[i] << " ";
+    std::cout << "\n";
     
     return 0;
 }
