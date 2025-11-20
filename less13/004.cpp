@@ -10,6 +10,10 @@ void sortArr(int arr[size], int len = size) {
                 arr[j] = arr[i];
                 arr[i] = indMin;
             }
+            for(int i{}; i < size; i++) {
+                std::cout << arr[i] << " ";
+            }
+            std::cout << "\n"; 
         }
     }
 }
